@@ -10,11 +10,6 @@
   config = lib.mkMerge [
     {
       services.xserver.videoDrivers = lib.mkDefault [ "modesetting" ];
-
-      hardware.opengl = {
-        driSupport = lib.mkDefault true;
-        driSupport32Bit = lib.mkDefault true;
-      };
     }
     (lib.mkIf config.hardware.amdgpu.loadInInitrd {
       boot.initrd.kernelModules = [ "amdgpu" ];
